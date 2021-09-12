@@ -35,7 +35,12 @@
     "test": "craco test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "format:check": "prettier . --check",
+    "format:fix": "prettier . --write",
+    "lint": "eslint .",
+    "type:check": "tsc",
+    "validate": "run-p lint type:check format:check"
   },
   "eslintConfig": {
     "extends": [
@@ -77,6 +82,7 @@
     "postcss": "^7.0.36",
     "prettier": "2.4.0",
     "storybook-addon-designs": "^6.1.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14",
+    "npm-run-all": "^4.1.5"
   }
 }
