@@ -1,12 +1,14 @@
-export interface ISampleCompProps { }
+import SampleAtom from '@atoms/SampleAtom'
 
-  const SampleComp = ({ }: ISampleCompProps) => {
-    return (
-      <div>
-        🛬  Hello, This is SampleComp component! 🛫
-      </div>
-    )
-  }
+export interface ISampleCompProps {}
 
-  export default SampleComp
-  
+const SampleComp = ({}: ISampleCompProps) => {
+  return (
+    <div>
+      🛬 Hello, This is SampleComp component! 🛫
+      <SampleAtom />
+    </div>
+  )
+}
+
+export default SampleComp
