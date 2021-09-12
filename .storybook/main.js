@@ -24,6 +24,20 @@ module.exports = {
       '@epicfirebase': path.resolve('src/firebase'),
       '@epictypes': path.resolve('src/types'),
     }
+
+    config.module.rules.push({
+      test: /\.css$/,
+      use: [
+        {
+          loader: 'postcss-loader',
+          options: {
+            ident: 'postcss',
+            plugins: [require('tailwindcss'), require('autoprefixer')],
+          },
+        },
+      ],
+      include: path.resolve(__dirname, '../'),
+    })
     return config
   },
 }

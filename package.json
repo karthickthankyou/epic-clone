@@ -73,6 +73,9 @@
     "@storybook/node-logger": "^6.3.8",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.8",
-    "storybook-addon-designs": "^6.1.0"
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.36",
+    "storybook-addon-designs": "^6.1.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
   }
 }

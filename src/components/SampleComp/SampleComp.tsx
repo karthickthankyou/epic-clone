@@ -4,7 +4,7 @@ export interface ISampleCompProps {}
 
 const SampleComp = ({}: ISampleCompProps) => {
   return (
-    <div>
+    <div className='p-5 bg-red-400'>
       🛬 Hello, This is SampleComp component! 🛫
       <SampleAtom />
     </div>

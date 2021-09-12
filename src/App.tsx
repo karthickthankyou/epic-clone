@@ -5,7 +5,7 @@ import SampleAtom from '@atoms/SampleAtom'
 
 function App() {
   return (
-    <div>
+    <div className='p-5 bg-blue-600 text-red-400'>
       Hello World
       <SampleAtom />
     </div>
