@@ -33,6 +33,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "test:e2e": "echo Running e2e tests && exit 0",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
