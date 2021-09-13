@@ -40,7 +40,8 @@
     "format:fix": "prettier . --write",
     "lint": "eslint . --ext .ts --ext .tsx",
     "type:check": "tsc",
-    "validate": "run-p lint type:check format:check"
+    "validate": "run-p lint type:check format:check",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -89,10 +90,16 @@
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-security": "^1.4.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
     "npm-run-all": "^4.1.5",
     "postcss": "^7.0.36",
     "prettier": "2.4.0",
     "storybook-addon-designs": "^6.1.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "*.{ts,tsx,js,css,md}": "prettier --write"
   }
 }
