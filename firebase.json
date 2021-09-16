@@ -2,7 +2,7 @@
   "hosting": [
     {
       "site": "epicgames-clone",
-      "public": "public",
+      "public": "build",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
@@ -13,7 +13,7 @@
     },
     {
       "site": "epicgames-clone-dev",
-      "public": "public",
+      "public": "build",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
