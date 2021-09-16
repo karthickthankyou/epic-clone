@@ -15,19 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "strictBindCallApply": false,
-    "paths": {
-      "@atoms/*": ["./src/components/atoms/*"],
-      "@molecules/*": ["./src/components/molecules/*"],
-      "@organisms/*": ["./src/components/organisms/*"],
-      "@pages/*": ["./src/components/pages/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@store/*": ["./src/store/*"],
-      "@epicfirebase/*": ["./src/firebase/*"],
-      "@epictypes/*": ["./src/types/*"]
-    }
+    "strictBindCallApply": false
   },
   "include": ["src"]
 }
