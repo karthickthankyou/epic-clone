@@ -21,6 +21,28 @@
           "destination": "/index.html"
         }
       ]
+    },
+    {
+      "site": "sb-epicgames-clone",
+      "public": "storybook-static",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "site": "sb-epicgames-clone-dev",
+      "public": "storybook-static",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     }
   ]
 }
