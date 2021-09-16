@@ -24,3 +24,19 @@ jobs:
       - run: npm test
       - run: npm run validate
       - run: npm run build --if-present
+      - if: (github.event_name == 'push') && github.ref == 'refs/heads/main'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          target: 'epicgames-clone'
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EPICGAMES_CLONE }}'
+          channelId: live
+          projectId: epicgames-clone
+      - if: (github.event_name == 'push') && github.ref == 'refs/heads/develop'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          target: 'epicgames-clone-dev'
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EPICGAMES_CLONE }}'
+          channelId: dev
+          projectId: epicgames-clone
