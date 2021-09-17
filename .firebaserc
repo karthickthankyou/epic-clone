@@ -1,5 +1,20 @@
 {
   "projects": {
     "default": "epicgames-clone"
+  },
+  "targets": {
+    "epicgames-clone": {
+      "hosting": {
+        "sb-epicgames-clone": [
+          "sb-epicgames-clone"
+        ],
+        "sb-epicgames-clone-dev": [
+          "sb-epicgames-clone-dev"
+        ],
+        "epicgames-clone-dev": [
+          "epicgames-clone-dev"
+        ]
+      }
+    }
   }
 }

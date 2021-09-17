@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "site": "epicgames-clone",
+      "target": "epicgames-clone",
       "public": "build",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "site": "epicgames-clone-dev",
+      "target": "epicgames-clone-dev",
       "public": "build",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "site": "sb-epicgames-clone",
+      "target": "sb-epicgames-clone",
       "public": "storybook-static",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
@@ -34,7 +34,7 @@
       ]
     },
     {
-      "site": "sb-epicgames-clone-dev",
+      "target": "sb-epicgames-clone-dev",
       "public": "storybook-static",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
