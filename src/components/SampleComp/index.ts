@@ -1,4 +1,3 @@
 import SampleComp from './SampleComp'
 
-  export default SampleComp
-  
+export default SampleComp

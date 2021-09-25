@@ -7,9 +7,7 @@ export default {
   component: SampleComp,
 } as ComponentMeta<typeof SampleComp>
 
-const Template: ComponentStory<typeof SampleComp> = (args) => (
-  <SampleComp {...args} />
-)
+const Template: ComponentStory<typeof SampleComp> = () => <SampleComp />
 
 export const Primary = Template.bind({})
 Primary.args = {}
