@@ -15,27 +15,48 @@ const initialState: UserGameType = {
   REMOVED_FROM_WISHLIST: defaultAsyncUserGames,
 }
 
+const withDefaultGames = ({
+  data = [],
+  fulfilled = false,
+  loading = false,
+  error = false,
+}: Partial<AsyncUserGames>): AsyncUserGames => ({
+  data,
+  fulfilled,
+  loading,
+  error,
+})
+
 const userGamesSlice = createSlice({
   name: 'userGames',
   initialState,
   reducers: {
-    setCartGameIds: (state, action: PayloadAction<UserGame[]>) => {
-      state.IN_CART = { data: action.payload }
+    setCartGameIds: (state, action: PayloadAction<Partial<AsyncUserGames>>) => {
+      state.IN_CART = withDefaultGames(action.payload)
     },
-    setWishlistGameIds: (state, action: PayloadAction<UserGame[]>) => {
-      state.WISHLISTED = { data: action.payload }
+    setWishlistGameIds: (
+      state,
+      action: PayloadAction<Partial<AsyncUserGames>>
+    ) => {
+      state.WISHLISTED = withDefaultGames(action.payload)
     },
-    setPurchasedGameIds: (state, action: PayloadAction<UserGame[]>) => {
-      state.PURCHASED = { data: action.payload }
+    setPurchasedGameIds: (
+      state,
+      action: PayloadAction<Partial<AsyncUserGames>>
+    ) => {
+      state.PURCHASED = withDefaultGames(action.payload)
     },
-    setRemovedFromCartGameIds: (state, action: PayloadAction<UserGame[]>) => {
-      state.REMOVED_FROM_CART = { data: action.payload }
+    setRemovedFromCartGameIds: (
+      state,
+      action: PayloadAction<Partial<AsyncUserGames>>
+    ) => {
+      state.REMOVED_FROM_CART = withDefaultGames(action.payload)
     },
     setRemovedFromWishlistGameIds: (
       state,
-      action: PayloadAction<UserGame[]>
+      action: PayloadAction<Partial<AsyncUserGames>>
     ) => {
-      state.REMOVED_FROM_WISHLIST = { data: action.payload }
+      state.REMOVED_FROM_WISHLIST = withDefaultGames(action.payload)
     },
   },
 })

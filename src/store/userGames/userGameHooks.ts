@@ -8,7 +8,7 @@ import {
 } from 'firebase/firestore'
 import { useEffect } from 'react'
 import { collections, db } from '../../config/firebase'
-import { UserGame, UserGameStatus } from '../../types'
+import { AsyncUserGames, UserGame, UserGameStatus } from '../../types'
 import { useAppDispatch, useAppSelector } from '..'
 import { selectUser } from '../user'
 import {
@@ -27,8 +27,9 @@ export function useUserGameIdsListener() {
   // Setup snapshots
   const setupOnSnapshot = (
     condition: UserGameStatus,
-    customAction: ActionCreatorWithPayload<UserGame[]>
+    customAction: ActionCreatorWithPayload<Partial<AsyncUserGames>>
   ) => {
+    dispatch(customAction({ loading: true }))
     const q = query(
       collection(db, collections.USER_GAMES),
       where('status', '==', condition),
@@ -41,7 +42,7 @@ export function useUserGameIdsListener() {
         arr.push(doc.data() as UserGame)
       })
 
-      dispatch(customAction(arr))
+      dispatch(customAction({ data: arr, fulfilled: true }))
     })
   }
   useEffect(() => {

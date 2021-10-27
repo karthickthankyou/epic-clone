@@ -78,8 +78,18 @@ const withDefaultGames = ({
 
 const setGames =
   (status: UserGameStatus) =>
-  (state: WritableDraft<GameSliceType>, action: PayloadAction<AsyncGames>) => {
-    state.userGames[status as UserGameStatus] = action.payload
+  (
+    state: WritableDraft<GameSliceType>,
+    action: PayloadAction<Partial<AsyncGames>>
+  ) => {
+    const data: AsyncGames = {
+      loading: false,
+      fulfilled: false,
+      error: false,
+      data: [],
+      ...action.payload,
+    }
+    state.userGames[status as UserGameStatus] = data
   }
 
 const gamesSlice = createSlice({

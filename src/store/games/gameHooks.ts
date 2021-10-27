@@ -44,9 +44,7 @@ export const useGetHomeGames = () => {
 
 export const useGetGamePage = (gamePageId: Game['id']) => {
   const dispatch = useAppDispatch()
-
   const gamePage = useAppSelector(selectGamePage)
-
   useEffect(() => {
     if (gamePageId) dispatch(getGamePage({ gameId: gamePageId }))
     return () => {
@@ -74,12 +72,13 @@ export function useUserGamesListener() {
 
   const setupListener = (
     userGames: AsyncUserGames,
-    action: ActionCreatorWithPayload<AsyncGames>
+    action: ActionCreatorWithPayload<Partial<AsyncGames>>
   ) => {
+    dispatch(action({ loading: true }))
     const ids = userGames.data.map((userGame) => userGame.gameId).slice(0, 10)
     if (ids.length === 0) return dispatch(action({ data: [] }))
     const queryGame = query(
-      collection(db, collections.GAMES),
+      collection(db, collections.GAMES_LIGHT),
       where('id', 'in', ids),
       limit(10)
     )
@@ -91,7 +90,7 @@ export function useUserGamesListener() {
         arr.push({ ...gameDetails, imageUrl, subImageUrl })
       })
 
-      dispatch(action({ data: arr }))
+      dispatch(action({ data: arr, fulfilled: true }))
     })
     return detachListener
   }
