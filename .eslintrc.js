@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'security'],
   rules: {
+    'react/require-default-props': 0,
     'import/prefer-default-export': 0,
     'import/extensions': 'off',
     'import/no-unresolved': 'off',

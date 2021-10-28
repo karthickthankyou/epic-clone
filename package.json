@@ -5,6 +5,8 @@
   "dependencies": {
     "@craco/craco": "^6.3.0",
     "@reduxjs/toolkit": "^1.6.1",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/line-clamp": "^0.2.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -36,11 +38,11 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "TAILWIND_MODE=watch  craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
+    "storybook": "TAILWIND_MODE=watch  start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "prettier": "prettier . --ignore-path .gitignore",
     "format:check": "npm run prettier -- --check",
