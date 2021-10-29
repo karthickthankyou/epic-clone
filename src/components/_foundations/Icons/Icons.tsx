@@ -1,36 +1,43 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useState } from 'react'
 import {
-  AppleIcon,
-  BriefcaseIcon,
-  BuildingIcon,
-  CartEmptyIcon,
-  CartSolidIcon,
-  CartOutlineIcon,
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-  ClipboardIcon,
-  CopyrightIcon,
-  DiscordIcon,
-  EducationIcon,
-  FacebookIcon,
-  GiftIcon,
-  GoogleIcon,
-  HeartOutlineIcon,
-  HeartSolidIcon,
-  InfinityIcon,
-  InstagramIcon,
-  LoaderIcon,
-  MenuIcon,
-  RegStarIcon,
-  SearchIcon,
-  ThumbsdownIcon,
-  ThumbsupIcon,
-  TwitterIcon,
-  WarningIcon,
-  CloseIcon,
-  YoutubeIcon,
-} from '../../../assets'
+  CartSolid,
+  CartReg,
+  GiftSolid,
+  GiftReg,
+  HeartSolid,
+  HeartReg,
+  StarReg,
+  StarSolid,
+  BriefcaseReg,
+  BriefcaseSolid,
+  ThumbsdownReg,
+  ThumbsupReg,
+  ThumbsdownSolid,
+  ThumbsupSolid,
+  LoaderReg,
+  MenuReg,
+  SearchReg,
+  CloseReg,
+  CheckReg,
+  ChevronDownReg,
+  ChevronUpReg,
+  ClipboardReg,
+  CopyrightReg,
+  InfoReg,
+  InfoSolid,
+  AppleSolid,
+  DiscordSolid,
+  YoutubeSolid,
+  TwitterSolid,
+  InstagramSolid,
+  FacebookSolid,
+  GoogleSolid,
+  EducationSolid,
+  InfinityReg,
+  WarningReg,
+  BuildingSolid,
+} from 'src/assets'
+import { useForgetAfterSometime } from 'src/hooks'
 
 export interface IIconsProps {}
 
@@ -39,80 +46,114 @@ const RenderIcons = ({
   items,
 }: {
   title: string
-  items: {
-    title: string
-    Icon: React.FunctionComponent<
-      React.SVGProps<SVGSVGElement> & {
-        title?: string | undefined
-      }
-    >
-  }[]
-}) => (
-  <div className="mt-3">
-    <div className="mb-2 text-gray-600 ">{title}</div>
-    <div className="grid grid-cols-2 gap-3 mx-auto sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 ">
-      {items.map(({ Icon, title: iconName }) => (
-        <div className="flex flex-col items-center justify-center p-2 border border-white rounded shadow bg-gray-50">
-          <Icon className="w-6 h-6 p-2" />
-          <div className="text-sm text-gray-600">{iconName}</div>
-        </div>
-      ))}
-    </div>
-  </div>
-)
+  items: React.FunctionComponent<
+    React.SVGProps<SVGSVGElement> & {
+      title?: string | undefined
+    }
+  >[]
+}) => {
+  const [selected, setSelected] = useForgetAfterSometime()
+  const select = (item: string) => {
+    setSelected(item)
+    navigator.clipboard.writeText(item)
+  }
+  return (
+    <>
+      <div className="mt-5 mb-3 text-lg font-semibold text-primary-800">
+        {title}
+      </div>
+      <div className="grid grid-cols-2 gap-3 mx-auto sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 ">
+        {items.map((Icon) => {
+          const iconName: string = Icon.displayName || ''
+          return (
+            <div key={iconName} className="aspect-w-1 aspect-h-1">
+              <div className="flex flex-col items-center justify-center p-2 border border-white rounded shadow bg-gray-50">
+                <Icon className="w-6 h-6 p-2 mt-auto" />
+                <button
+                  type="button"
+                  onClick={() => select(iconName)}
+                  className="mt-auto text-sm text-gray-600"
+                >
+                  {selected === iconName && (
+                    <div className="text-xs">{iconName} copied.</div>
+                  )}
+                  {iconName}
+                </button>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </>
+  )
+}
 
 const Icons = () => (
   <div className="bg-gray-100">
     <div className="container mx-auto">
       <h1 className="text-3xl font-thin">Icons</h1>
+      <p className="mt-3 text-gray-700">Import icons from the assets index.</p>
+      <code className="inline-block p-3 mt-2 text-sm text-white bg-gray-600 rounded">
+        {"import { IconName } from 'src/assets'"}{' '}
+      </code>
+      <p className="flex items-center mt-3 text-gray-700">
+        <InfoReg className="inline-block w-4 h-4 p-1 " /> Click on the Icon name
+        to copy the text.
+      </p>
       <RenderIcons
         title="Collectables"
         items={[
-          { title: 'CartEmptyIcon', Icon: CartEmptyIcon },
-          { title: 'CartSolidIcon', Icon: CartSolidIcon },
-          { title: 'CartOutlineIcon', Icon: CartOutlineIcon },
-          { title: 'GiftIcon', Icon: GiftIcon },
-          { title: 'HeartOutlineIcon', Icon: HeartOutlineIcon },
-          { title: 'HeartSolidIcon', Icon: HeartSolidIcon },
-          { title: 'ThumbsdownIcon', Icon: ThumbsdownIcon },
-          { title: 'ThumbsupIcon', Icon: ThumbsupIcon },
-          { title: 'RegStarIcon', Icon: RegStarIcon },
-          { title: 'BriefcaseIcon', Icon: BriefcaseIcon },
+          HeartSolid,
+          HeartReg,
+          CartSolid,
+          CartReg,
+          GiftSolid,
+          GiftReg,
+          StarSolid,
+          StarReg,
+          BriefcaseSolid,
+          BriefcaseReg,
+          ThumbsupSolid,
+          ThumbsupReg,
+          ThumbsdownSolid,
+          ThumbsdownReg,
         ]}
       />
       <RenderIcons
-        title="Simple"
+        title="Essentials"
         items={[
-          { title: 'CheckIcon', Icon: CheckIcon },
-          { title: 'ChevronDownIcon', Icon: ChevronDownIcon },
-          { title: 'ChevronUpIcon', Icon: ChevronUpIcon },
-          { title: 'CloseIcon', Icon: CloseIcon },
-          { title: 'LoaderIcon', Icon: LoaderIcon },
+          SearchReg,
+          MenuReg,
+          CheckReg,
+          CloseReg,
+          LoaderReg,
+          ChevronDownReg,
+          ChevronUpReg,
+          InfoSolid,
+          InfoReg,
         ]}
       />
       <RenderIcons
         title="Social Media"
         items={[
-          { title: 'YoutubeIcon', Icon: YoutubeIcon },
-          { title: 'TwitterIcon', Icon: TwitterIcon },
-          { title: 'InstagramIcon', Icon: InstagramIcon },
-          { title: 'GoogleIcon', Icon: GoogleIcon },
-          { title: 'DiscordIcon', Icon: DiscordIcon },
-          { title: 'FacebookIcon', Icon: FacebookIcon },
-          { title: 'AppleIcon', Icon: AppleIcon },
+          YoutubeSolid,
+          TwitterSolid,
+          InstagramSolid,
+          FacebookSolid,
+          AppleSolid,
+          GoogleSolid,
+          DiscordSolid,
         ]}
       />
       <RenderIcons
-        title="Remaning"
+        title="Misc"
         items={[
-          { title: 'BuildingIcon', Icon: BuildingIcon },
-          { title: 'ClipboardIcon', Icon: ClipboardIcon },
-          { title: 'CopyrightIcon', Icon: CopyrightIcon },
-          { title: 'EducationIcon', Icon: EducationIcon },
-          { title: 'InfinityIcon', Icon: InfinityIcon },
-          { title: 'MenuIcon', Icon: MenuIcon },
-          { title: 'SearchIcon', Icon: SearchIcon },
-          { title: 'WarningIcon', Icon: WarningIcon },
+          EducationSolid,
+          ClipboardReg,
+          CopyrightReg,
+          // InfinityReg,
+          WarningReg,
+          BuildingSolid,
         ]}
       />
     </div>
