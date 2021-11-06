@@ -36,6 +36,8 @@ import {
   InfinityReg,
   WarningReg,
   BuildingSolid,
+  NotificationReg,
+  NotificationSolid,
 } from 'src/assets'
 import { useForgetAfterSometime } from 'src/hooks'
 
@@ -129,6 +131,8 @@ const Icons = () => (
           LoaderReg,
           ChevronDownReg,
           ChevronUpReg,
+          NotificationReg,
+          NotificationSolid,
           InfoSolid,
           InfoReg,
         ]}

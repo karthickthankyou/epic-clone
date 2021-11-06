@@ -34,6 +34,8 @@ import { ReactComponent as CloseReg } from './svgs/x.svg'
 import { ReactComponent as YoutubeSolid } from './svgs/youtube.svg'
 import { ReactComponent as InfoReg } from './svgs/inforeg.svg'
 import { ReactComponent as InfoSolid } from './svgs/infosolid.svg'
+import { ReactComponent as NotificationReg } from './svgs/notificationreg.svg'
+import { ReactComponent as NotificationSolid } from './svgs/notificationsolid.svg'
 
 AppleSolid.displayName = 'AppleSolid'
 BriefcaseReg.displayName = 'BriefcaseReg'
@@ -71,6 +73,8 @@ CloseReg.displayName = 'CloseReg'
 YoutubeSolid.displayName = 'YoutubeSolid'
 InfoReg.displayName = 'InfoReg'
 InfoSolid.displayName = 'InfoSolid'
+NotificationReg.displayName = 'NotificationReg'
+NotificationSolid.displayName = 'NotificationSolid'
 
 export {
   AppleSolid,
@@ -109,4 +113,6 @@ export {
   YoutubeSolid,
   InfoReg,
   InfoSolid,
+  NotificationReg,
+  NotificationSolid,
 }
